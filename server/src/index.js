@@ -19,6 +19,20 @@ app.get("/users/", async (req, res) => {
   res.json(user);
 });
 
+// update user
+// exmaple http://localhost:3000/id
+app.patch("/user/:id", async (req, res) => {
+  const { id } = req.params;
+  const data = req.body;
+  const update = await prisma.user.update({
+    data: data,
+  });
+  res.json(update);
+});
+
+// delete user
+app.delete("/user/:id", async (req, res) => {});
+
 // authentication
 
 // login
@@ -31,7 +45,7 @@ app.post("/login", async (req, res) => {
     if (!findId) {
       throw { message: "Identification number not found" };
     }
-    if (password != findId.password) {
+    if (password !== findId.password) {
       throw { message: "Password isn't match" };
     }
     res.json(findId);
@@ -45,8 +59,7 @@ app.post("/login", async (req, res) => {
 
 app.post("/register", async (req, res) => {
   try {
-    const { identificationNumber, password, firstName, lastName, phone } =
-      req.body;
+    const { identificationNumber, password, firstName, lastName, phone } = req.body;
     const findId = await prisma.user.findUnique({
       where: { identificationNumber: identificationNumber },
     });
@@ -65,7 +78,7 @@ app.post("/register", async (req, res) => {
     res.json(registerNew);
   } catch (error) {
     console.log(error);
-    res.status(400).json(error)
+    res.status(400).json(error);
   }
 });
 
