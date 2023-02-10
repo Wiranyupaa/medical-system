@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "dev": "nodemon ./scr/index.js",
+    "dev": "nodemon ./src/index.js",
     "migration": "npx prisma migration dev --name init",
     "db:push": "npx prisma db push",
     "db:seed": "npx prisma db seed"
@@ -14,6 +15,9 @@
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^4.10.1",
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
     "nodemon": "^2.0.20",
     "prisma": "^4.10.1"
   },

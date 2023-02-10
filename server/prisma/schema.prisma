@@ -14,7 +14,7 @@ datasource db {
 model User {
   id Int @id @default(autoincrement())
 
-  identificationNumber String @map("identification number")
+  identificationNumber String @map("identification number") @unique
   firstName            String @map("first_name")
   lastName             String @map("last_name")
   password             String
