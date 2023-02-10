@@ -6,6 +6,82 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  // provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model User {
+  id Int @id @default(autoincrement())
+
+  identificationNumber String @map("identification number")
+  firstName            String @map("first_name")
+  lastName             String @map("last_name")
+  password             String
+  phone                String
+  role                 Role?  @default(PATIENT)
+
+  Order Order[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+}
+
+model Category {
+  id           Int    @id @default(autoincrement())
+  categoryName String @map("category_name")
+
+  medicine Medicine[]
+}
+
+model Medicine {
+  id           Int    @id @default(autoincrement())
+  medicineName String @map("medicine_name")
+  price        Float
+  categoryId   Int?
+
+  orderMedicine OrderMedicine[]
+
+  Category Category? @relation(fields: [categoryId], references: [id])
+}
+
+model Order {
+  id         Int      @id @default(autoincrement())
+  userId     Int?
+  symptom    String?
+  totalPrice Float    @map("total_price")
+  doctorId   Int?
+  patientId  Int?
+  payment    Payment?
+  status     Boolean  @default(false)
+
+  orderMedicine OrderMedicine[]
+
+  User User? @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+}
+
+model Payment {
+  id        Int      @id @default(autoincrement())
+  order     Order?   @relation(fields: [orderId], references: [id])
+  orderId   Int      @unique
+  createdAt DateTime @default(now()) @map("created_at")
+}
+
+model OrderMedicine {
+  orderId    Int
+  medicineId Int
+  order      Order?    @relation(fields: [orderId], references: [id])
+  medicine   Medicine? @relation(fields: [medicineId], references: [id])
+
+  @@id([medicineId, orderId])
+  @@map("Order_medicine")
+}
+
+enum Role {
+  ADMIN
+  DOCTOR
+  PATIENT
 }
