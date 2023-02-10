@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./scr/index.js"
+    "dev": "nodemon ./scr/index.js",
+    "migration": "npx prisma migration dev --name init",
+    "db:push": "npx prisma db push",
+    "db:seed": "npx prisma db seed"
   },
   "keywords": [],
   "author": "",
@@ -13,5 +16,8 @@
     "@prisma/client": "^4.10.1",
     "nodemon": "^2.0.20",
     "prisma": "^4.10.1"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
   }
 }

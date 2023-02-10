@@ -64,10 +64,11 @@ model Order {
 }
 
 model Payment {
-  id        Int      @id @default(autoincrement())
-  order     Order?   @relation(fields: [orderId], references: [id])
-  orderId   Int      @unique
-  createdAt DateTime @default(now()) @map("created_at")
+  id           Int      @id @default(autoincrement())
+  banking_name String
+  order        Order?   @relation(fields: [orderId], references: [id])
+  orderId      Int      @unique
+  createdAt    DateTime @default(now()) @map("created_at")
 }
 
 model OrderMedicine {
