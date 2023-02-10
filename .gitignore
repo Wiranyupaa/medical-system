@@ -1,8 +1,8 @@
 # lock file
-pnpm-lock.yaml
+**/*/pnpm-lock.yaml
 
 # Dependency directories
-node_modules/
+**/*/node_modules/
 
 # dotenv environment variables file
-.env
+**/*/.env
