@@ -1,19 +1,17 @@
-import {createRouter,createWebHashHistory} from "vue-router";
-
-const About = { template: "<div>About</div>" };
+import { createRouter, createWebHashHistory } from "vue-router";
+import home from "../views/Home.vue"
+import login from "../views/Login.vue"
 
 const routes = [
   {
     path: "/",
-    component: () => {
-      import("../views/HomeView.vue");
-    },
+    name: "home",
+    component: home,
   },
   {
     path: "/login",
-    component: () => {
-      import("../views/LoginView.vue");
-    },
+    name: "login",
+    component: login,
   },
 ];
 
