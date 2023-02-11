@@ -1,6 +1,6 @@
 <template>
     <div>
-
+        <h1>sadads</h1>
 
 
     </div>
@@ -12,6 +12,6 @@ name: 'RegisterVue',
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

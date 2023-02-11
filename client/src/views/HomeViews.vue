@@ -1,10 +1,15 @@
 <template>
-  <router-view/>
+  <div>
+    wwwwwwww
+  </div>
 </template>
 
 <script>
 export default {
-  name: "App",
-  components: {},
-};
+
+}
 </script>
+
+<style scoped>
+
+</style>

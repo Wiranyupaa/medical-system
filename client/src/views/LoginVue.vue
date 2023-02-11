@@ -7,9 +7,10 @@
 <script>
 export default {
 name: 'LoginVue',
+components:''
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>
