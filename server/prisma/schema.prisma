@@ -16,13 +16,23 @@ model User {
   id Int @id @default(autoincrement())
 
   identificationNumber String @map("identification number") @unique
-  firstName            String @map("first_name")
-  lastName             String @map("last_name")
+  firstName            String? @map("first_name")
+  lastName             String? @map("last_name")
   password             String
-  phone                String
+  phone                String?
   role                 Role?  @default(PATIENT)
 
   Order Order[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+}
+
+model Admin {
+  id Int @id @default(autoincrement())
+  
+  username String 
+  password String
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
