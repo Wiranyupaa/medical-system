@@ -49,11 +49,11 @@ template {
                         <a class='text-[20px] underline-1 mt-[3px] ' href="">Home</a>
                     </div>
                     <div class="mr-[47px]">
-                        <a class='text-[20px] underline-1 mt-[3px]' href="">Record</a>
+                        <a class='text-[20px] underline-1 mt-[3px]' href="">Medicine</a>
                     </div>
 
                     <div class="mr-[47px]">
-                        <a class='text-[20px] underline-1 mt-[3px]' href=""> Prescript</a>
+                        <a class='text-[20px] underline-1 mt-[3px]' href="">All patient</a>
                         <div v-if='isOpen' class="border-[1px]  border-black rounded-md absolute mt-8  ">
                             <div class="flex p-3">
                                 <img src="../assets/User.png" alt="" class="mr-[5px]">
