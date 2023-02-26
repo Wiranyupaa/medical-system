@@ -2,35 +2,26 @@
 template {
     scroll-behavior: smooth;
 }
-
 .underline-1 {
     background-image: linear-gradient(90deg, rgb(0, 0, 0), #000000);
     background-size: 0% 3px;
     background-repeat: no-repeat;
-
     background-position: right bottom;
     text-decoration: none;
     transition: background-size 500ms ease;
     padding-bottom: 10px;
-
-
 }
-
 .underline-1:hover {
     background-size: 100% 3px;
     background-position: left bottom;
-
 }
-
 .underline-2 {
     background-image: linear-gradient(90deg, #111727, #FF5757);
     background-size: 100% 3px;
     background-repeat: no-repeat;
     background-position: left bottom;
     text-decoration: none;
-
 }
-
 .curcer {
     cursor: default;
 }
@@ -85,7 +76,6 @@ template {
 </template>
 
 <script>
-
 export default {
     data() {
         return {
@@ -93,22 +83,13 @@ export default {
             isOpen: false,
             UserName: 'wiwat liangkobkit',
             Logout: 'Logout',
-
         }
     },
-
     methods: {
-
     },
     components: {
-
     },
     watch: {
-
     }
-
-
-
 }
 </script>
-
