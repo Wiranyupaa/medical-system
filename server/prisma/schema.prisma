@@ -13,8 +13,8 @@ datasource db {
 
 model User {
 
-  id Int @id @default(autoincrement())
-
+  id String @id @default(uuid())
+  
   identificationNumber String @map("identification number") @unique
   firstName            String? @map("first_name")
   lastName             String? @map("last_name")
@@ -29,7 +29,7 @@ model User {
 }
 
 model Admin {
-  id Int @id @default(autoincrement())
+  id String @id @default(uuid())
   
   username String 
   password String
@@ -39,17 +39,22 @@ model Admin {
 }
 
 model Category {
-  id           Int    @id @default(autoincrement())
+  id    String @id @default(uuid())
   categoryName String @map("category_name")
 
   medicine Medicine[]
 }
 
 model Medicine {
-  id           Int    @id @default(autoincrement())
+  id         String @id @default(uuid())
   medicineName String @map("medicine_name")
   price        Float
-  categoryId   Int?
+  categoryId   String?
+
+  
+
+
+
 
   orderMedicine OrderMedicine[]
 
@@ -57,12 +62,12 @@ model Medicine {
 }
 
 model Order {
-  id         Int      @id @default(autoincrement())
-  userId     Int?
+  id         String @id @default(uuid())
+  userId     String?
   symptom    String?
   totalPrice Float    @map("total_price")
-  doctorId   Int?
-  patientId  Int?
+  doctorId   String?
+  patientId  String?
   payment    Payment?
   status     Boolean  @default(false)
 
@@ -75,16 +80,16 @@ model Order {
 }
 
 model Payment {
-  id           Int      @id @default(autoincrement())
+  id             String @id @default(uuid())
   banking_name String
   order        Order?   @relation(fields: [orderId], references: [id])
-  orderId      Int      @unique
+  orderId      String      @unique
   createdAt    DateTime @default(now()) @map("created_at")
 }
 
 model OrderMedicine {
-  orderId    Int
-  medicineId Int
+  orderId    String
+  medicineId String
   order      Order?    @relation(fields: [orderId], references: [id])
   medicine   Medicine? @relation(fields: [medicineId], references: [id])
 
