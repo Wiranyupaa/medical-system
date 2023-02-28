@@ -17,56 +17,48 @@ hr {
 </style>
 
 <template>
-    <div class="grid grid-rows-1">
-       
-
-        <!-- ฝั่งซ้าย -->
-        <div class="grid-flow-col-1 w-2/5 ">
-            <div class="w-[80px] inline-flex place-items-start mb-[75px] ml-[30px] ">
-                <img class="w-[75px] h-[76px]" src="../assets/logologin.png" alt="" />
-                <p class="mt-[20px] text-2xl">{{ pname }}</p>
+    <section>
+        <div class="relative ">
+            <div class="w-full h-[80px] px-[35px] mb-[77px] place-items-start inline-flex ">
+                <img src="../assets/logologin.png" class="w-[85px]" >
+                <button class="py-6 text-2xl" @click="this.$router.push('/')" >{{ pname }}</button>
             </div>
 
-            <div class="ml-[54px] mb-[50px] space-y-10">
-                <a class="underline1 text-[#111727] text-4xl">Welcome </a>
-                <p class="text-[#70737D] text-sm ">Login, W&N Hospital is ready to serve you.</p>
+            <div class="px-[58px] mb-[45px] space-y-10" >
+                <p class="underline1 text-4xl" >Welcome</p>
+                <p class="text-sm text-[#70737D]" >Login, W&N Hospital is ready to serve you.</p>
             </div>
 
-            <div class="px-[54px] mb-[60px] ">
-                <div class="mb-[50px]">
-                    <input type="text" id="idCard" v-model="idCard" placeholder="ID Card" required
-                        class="bg-[#F9F9F9] text-sm rounded-[7px] w-full p-2.5 dark:bg-[#F9F9F9] pr-3 pl-16">
-                    <img src="../assets/idcard.png"
-                      
-                        class="w-[26px]] h-[19px] absolute mt-[-30px] pl-6 pointer-events-none focus-within:text-gray-600">
-                    <hr>
-                </div>
-                <div>
-                    <input :type="show === true ? 'text' : 'password'" id="password" v-model="password"
-                        placeholder="password" required
-                        class="bg-[#F9F9F9] text-sm rounded-[7px] w-full p-2.5 dark:bg-[#F9F9F9] pr-3 pl-16">
-                    <img src="../assets/key.png" class="w-[20px]] h-[19px] absolute mt-[-30px] pl-6 pointer-events-none">
-                    <img src="../assets/eye.png" class="w-[20px]] h-[20px] absolute mt-[-30px] ml-[450px] cursor-pointer"
-                        v-if="show" @click="show = !show">
-                    <img src="../assets/Union.png" class="w-[18px]] h-[18px] absolute mt-[-30px] ml-[451px]" v-else
-                        @click="show = !show">
-                    <hr>
-                </div>
+            <div class="px-[58px]"  >
+                <form action="">
+                    <div class="" >
+                        <input type="text" name="idcard" v-model="idcard" placeholder="idcard" class="bg-[#F9F9F9] text-[#111727] text-sm w-[36%] p-2.5 pl-16 rounded-[7px]
+                        focus:ring-2 focus:outline-none focus:ring-[#111727] ">
+                        <hr class="w-[36%]" >
+                        <img src="../assets/idcard.png" class="absolute mt-[-37px] pl-6 pointer-events-none" >
+                    </div>
+
+                    <div class="mt-[50px] " >
+                        <input :type="show === true ? 'text': 'password' " name="password" placeholder="password" class="bg-[#F9F9F9] rounded-[7px] text-[#111727] text-sm p-2.5 pl-16 w-[36%]
+                        focus:ring-2 focus:outline-none focus:ring-[#111727] ">
+                        <hr class="w-[36%]" >
+                        <img src="../assets/key.png" class="absolute mt-[-37px] pl-6 pointer-events-none" >
+                        <img src="../assets/Union.png" v-if="show" @click="show = !show" class="absolute mt-[-37px] mr-10  left-[34%] " >
+                        <img src="../assets/eye.png"  v-else @click="show =! show"  class="absolute mt-[-37px] left-[34%] w-[27px] h-[24px] pr-1 " >
+                    </div>
+                </form>
             </div>
 
-            <div class="ml-[54px] mr-[54px] space-y-3 ">
-                <button type="button"
-                    class="text-white bg-[#111727] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-gray-300 dark:focus:ring-gray-300 font-medium w-full rounded-lg text-lg p-2.5  text-center mr-2 mb-2">Login</button>
-                <p class="text-[#858A91] text-sm text-center">Don’t have an account? <b class="text-[#43474E]">Sign up free
-                        ✨</b> </p>
+            <div class="px-[58px] mt-[65px] space-y-3">
+                <button type="text" class="button text-white bg-[#111727] rounded-[7px] text-lg p-3 text-center mr-2 mb-2 w-[36%]" @click="this.$router.push('/')">Login</button>
+                    <p class="text-[#858A91] text-sm text-center w-[36%]" >Don’t have an account? <button @click="this.$router.push('register')" class="text-[#43474E]" >Sign up free ✨</button> </p>
             </div>
+      
+            <div class="w-3/5 absolute right-0 top-0 h-screen" >
+                <img class="bg-no-repeat h-full w-full rounded-l-[32px]" src="../assets/loginPic.png" >
+             </div>
         </div>
-
-         <!-- ฝั่งขวา -->
-         <div class="grid-flow-col-1 w-3/5 rounded-l-lg absolute right-[-120px] top-0 h-full ">
-            <img class="bg-no-repeat bg-cover h-full" src="../assets/loginPic.png" alt="">
-        </div>
-    </div>
+    </section>
 </template>
 
 <script>
@@ -75,7 +67,6 @@ export default {
         return {
             pname: "W&N",
             idcard: '',
-            idCard: '',
             password: '',
             show: false
         };
