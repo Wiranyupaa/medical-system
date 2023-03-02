@@ -57,7 +57,7 @@ template {
                         </div>
                     </div>
                     <div class="mr-[47px]">
-                        <a class='text-[20px]' @click="isOpen = !isOpen" href="#">
+                        <a class='text-[20px]' @click="isOpen = !isOpen" >
                             <img src="../assets/User_cicrle_light.png" alt="">
                         </a>
 
